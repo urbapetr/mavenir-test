@@ -1,8 +1,9 @@
 package org.selenide.examples;
 
-import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.*;
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 import org.openqa.selenium.By;
 
@@ -24,7 +25,8 @@ public class AppTest
     {
         open("http://google.com");
         $(By.name("q")).setValue("Mojmir Kubistel").pressEnter();
-        $$(withText("imdb.com")).shouldHave(size(1));
-        $(withText("imdb.com")).click();
+        int size = $$(withText("Mojmír Kubistel - IMDb")).size();
+        assertEquals(size, 1);
+        $(withText("Mojmír Kubistel - IMDb")).click();
     }
 }
