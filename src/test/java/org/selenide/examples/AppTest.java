@@ -25,8 +25,7 @@ public class AppTest
     {
         open("http://google.com");
         $(By.name("q")).setValue("Mojmir Kubistel").pressEnter();
-        int size = $$(withText("Mojmír Kubistel - IMDb")).size();
-        assertEquals(size, 1);
+        assertEquals($$(withText("Mojmír Kubistel - IMDb")).size(), 1);
         $(withText("Mojmír Kubistel - IMDb")).click();
     }
 }
